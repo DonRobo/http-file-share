@@ -44,13 +44,7 @@ public class LanHandler extends AbstractHandler {
 				out.println("Available files:<br/>");
 
 				final File[] files = sourceFolder.listFiles();
-				Arrays.sort(files, new Comparator<File>() {
-
-					@Override
-					public int compare(final File o1, final File o2) {
-						return o1.getName().compareTo(o2.getName());
-					}
-				});
+				Arrays.sort(files, Comparator.comparing(File::getName));
 
 				for (final File file : files) {
 					out.println("<a href=\"/" + file.getName() + "\">");
